@@ -11,6 +11,7 @@ import {MaterialModule} from './material.module';
 import { AddMovieComponent } from './dialogs/add-movie/add-movie.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { YesNoComponent } from './dialogs/yes-no/yes-no.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppComponent,
     MoviesListComponent,
     AddMovieComponent,
+    YesNoComponent,
 
   ],
   imports: [
@@ -30,7 +32,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MaterialModule,
   ],
   providers: [ApiService],
-  entryComponents: [AddMovieComponent],
+  entryComponents: [AddMovieComponent,YesNoComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

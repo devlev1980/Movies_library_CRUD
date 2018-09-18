@@ -36,7 +36,7 @@ export class ApiService {
   }
 
   deleteMovie(id) {
-    const url = environment.apiURL + id;
+    const url = environment.apiURL + '/' + id;
     return this._http.delete(url, id);
   }
 

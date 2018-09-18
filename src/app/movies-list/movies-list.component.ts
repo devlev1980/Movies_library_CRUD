@@ -3,6 +3,7 @@ import {ApiService} from '../services/api.service';
 import {Movie} from '../models/movie';
 import {MatDialog} from '@angular/material';
 import {AddMovieComponent} from '../dialogs/add-movie/add-movie.component';
+import {YesNoComponent} from '../dialogs/yes-no/yes-no.component';
 
 @Component({
   selector: 'app-movies-list',
@@ -12,7 +13,7 @@ import {AddMovieComponent} from '../dialogs/add-movie/add-movie.component';
 export class MoviesListComponent implements OnInit {
   movies: Movie[];
 
-  constructor(private apiService: ApiService,private dialog: MatDialog) {
+  constructor(private apiService: ApiService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -27,10 +28,25 @@ export class MoviesListComponent implements OnInit {
     });
 
   }
-  onAddBook(){
-    this.dialog.open(AddMovieComponent,{
+
+  onAddBook() {
+    this.dialog.open(AddMovieComponent, {
       width: '500px'
-    })
+    });
+
+  }
+
+  onDeleteBook(id) {
+    this.dialog.open(YesNoComponent, {
+      width: '300px',
+      data: id
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.apiService.deleteMovie(id).subscribe(() => {
+          console.log('Movie was deleted');
+        });
+      }
+    });
   }
 
 }

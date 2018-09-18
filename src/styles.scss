@@ -6,3 +6,23 @@ body{
   padding: 0;
   background-color: #C6C5B9;
 }
+mat-dialog-container.mat-dialog-container{
+  background-color: #283044;
+  color: #fff;
+
+  .actions {
+    margin-top: 1rem;
+    text-align: right;
+    .btnAdd,.btnYes{
+      background-color: #38E4AE;
+
+    }
+    .btnCancel,.btnNO{
+      background-color: #A53860;
+    }
+  }
+
+
+}
+
+
