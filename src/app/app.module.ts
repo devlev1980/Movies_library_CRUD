@@ -7,20 +7,30 @@ import { AppComponent } from './app.component';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ApiService} from './services/api.service';
+import {MaterialModule} from './material.module';
+import { AddMovieComponent } from './dialogs/add-movie/add-movie.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesListComponent,
+    AddMovieComponent,
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
   ],
   providers: [ApiService],
+  entryComponents: [AddMovieComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

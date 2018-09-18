@@ -1,0 +1,28 @@
+.cards{
+  margin-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border: 1px solid orange;
+}
+mat-card{
+  width: 30rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background-color: #283044;
+  color: #fff;
+  &:hover mat-card-title {
+    color:#38E4AE
+  }
+  
+  .btnEdit{
+    background-color: #38E4AE;
+  }
+  .btnDelete{
+    background-color: #A53860;
+  }
+  mat-card-actions{
+    text-align: right;
+  }
+}
+

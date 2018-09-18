@@ -1,0 +1,24 @@
+<div class="movieForm" >
+  <h3>Add New Movie</h3>
+  <form [formGroup]="addMovieForm" (submit)="onAddMovie(addMovieForm.value)" fxLayoutAlign="column">
+    <mat-form-field >
+      <label>Title:</label>
+      <input matInput type="text" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field >
+      <label>Director:</label>
+      <input matInput type="text" formControlName="director">
+    </mat-form-field>
+
+    <mat-form-field >
+      <label>Genre:</label>
+      <input matInput type="text" formControlName="genre">
+    </mat-form-field>
+
+    <mat-form-field >
+      <label>Year:</label>
+      <input matInput type="text" formControlName="year">
+    </mat-form-field>
+  </form>
+</div>
