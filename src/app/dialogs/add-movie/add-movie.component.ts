@@ -16,7 +16,10 @@ export class AddMovieComponent implements OnInit {
       director: new FormControl('', Validators.required),
       genre: new FormControl('', Validators.required),
       runtime: new FormControl('', Validators.required),
-      year: new FormControl('', Validators.minLength(4))
+      year: new FormControl('', [Validators.required,
+        Validators.maxLength(4),
+        Validators.minLength(4),
+        Validators.pattern('^[0-9]*$')])
     });
   }
 

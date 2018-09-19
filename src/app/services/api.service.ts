@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   updateMovie(movie, id) {
-    const url = environment.apiURL;
+    const url = environment.apiURL + '/' + id;
     const updatedMovie = {
       id: id,
       title: movie.title,

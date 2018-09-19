@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material';
 import {AddMovieComponent} from '../dialogs/add-movie/add-movie.component';
 import {YesNoComponent} from '../dialogs/yes-no/yes-no.component';
 import {EditDialogComponent} from '../dialogs/edit-dialog/edit-dialog.component';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-movies-list',
@@ -33,11 +34,13 @@ export class MoviesListComponent implements OnInit {
   onAddBook() {
     this.dialog.open(AddMovieComponent, {
       width: '500px'
+    }).afterClosed().subscribe(() => {
+      this.ngOnInit();
     });
 
   }
 
-  onDeleteBook(id) {
+  onDeleteMovie(id) {
     this.dialog.open(YesNoComponent, {
       width: '300px',
       data: id
@@ -45,8 +48,10 @@ export class MoviesListComponent implements OnInit {
       if (result) {
         this.apiService.deleteMovie(id).subscribe(() => {
           console.log('Movie was deleted');
+          this.ngOnInit();
         });
       }
+
     });
   }
 
@@ -54,6 +59,8 @@ export class MoviesListComponent implements OnInit {
     this.dialog.open(EditDialogComponent, {
       width: '600px',
       data: movie
+    }).afterClosed().subscribe(() => {
+      this.ngOnInit();
     });
 
   }
