@@ -1,6 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../services/api.service';
+import {MoviesListComponent} from '../../movies-list/movies-list.component';
 
 @Component({
   selector: 'app-add-movie',
@@ -9,6 +10,7 @@ import {ApiService} from '../../services/api.service';
 })
 export class AddMovieComponent implements OnInit {
   addMovieForm: FormGroup;
+  onAdd = new EventEmitter();
 
   constructor(private apiService: ApiService) {
     this.addMovieForm = new FormGroup({
@@ -24,16 +26,18 @@ export class AddMovieComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.apiService.getMovies().subscribe()
   }
 
   onAddMovie(form) {
     console.log('add', form);
+    // this.onAdd.emit(form);
     this.apiService.addMovie(form).subscribe(result => {
       if (result) {
         console.log('Movie was added');
       }
+
     });
+
 
   }
 

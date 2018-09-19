@@ -24,9 +24,6 @@ export class EditDialogComponent implements OnInit {
     });
   }
 
-  get year() {
-    return this.form.get('year');
-  }
 
 
   ngOnInit() {

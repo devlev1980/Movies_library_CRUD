@@ -1,7 +1,7 @@
 
 <mat-dialog-content>
   <div class="movieForm" >
-    <h3>Edit Movie</h3>
+    <h2>Edit Movie</h2>
     <form [formGroup]="form" >
       <mat-form-field >
         <label>Title:</label>
@@ -28,8 +28,6 @@
         <label>Runtime:</label>
         <input matInput type="text" formControlName="runtime" >
         <mat-error *ngIf="!form.get('runtime').valid">Please enter a duration</mat-error>
-
-
       </mat-form-field>
 
       <mat-form-field >
@@ -39,14 +37,13 @@
         <mat-error *ngIf="!form.controls['year'].hasError('maxLength')"></mat-error>
         <mat-error *ngIf="form.controls['year'].hasError('required')">This field is required</mat-error>
         <mat-error *ngIf="form.controls['year'].hasError('pattern')">Please enter digits only from 0-9</mat-error>
-        <!--<mat-error *ngIf="form.controls['year'].hasError('minLength')">Minimum must be 4 digits</mat-error>-->
-
       </mat-form-field>
 
       <div class="actions">
         <button mat-raised-button color="primary" mat-dialog-close class="btnAdd" (click)="onSaveMovie(form.value,data.id)" [disabled]="form.invalid">SAVE</button>
         <button mat-raised-button color="primary" [mat-dialog-close]="false"  class="btnCancel" >CANCEL</button>
       </div>
+
     </form>
   </div>
 </mat-dialog-content>

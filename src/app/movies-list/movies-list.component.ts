@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
 import {Movie} from '../models/movie';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {AddMovieComponent} from '../dialogs/add-movie/add-movie.component';
 import {YesNoComponent} from '../dialogs/yes-no/yes-no.component';
 import {EditDialogComponent} from '../dialogs/edit-dialog/edit-dialog.component';
-import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-movies-list',
@@ -14,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class MoviesListComponent implements OnInit {
   movies: Movie[];
+  searchInput: string;
 
   constructor(private apiService: ApiService, private dialog: MatDialog) {
   }
@@ -27,16 +27,31 @@ export class MoviesListComponent implements OnInit {
         console.log('error');
       }
 
+    }, err => {
+      console.log(err);
     });
 
   }
 
-  onAddBook() {
-    this.dialog.open(AddMovieComponent, {
+  onAddBook(event) {
+    const dialogref = this.dialog.open(AddMovieComponent, {
       width: '500px'
-    }).afterClosed().subscribe(() => {
-      this.ngOnInit();
     });
+    const sub = dialogref.componentInstance.onAdd.subscribe((form) => {
+      // do something
+      console.log('Form', form);
+      this.apiService.addMovie(form).subscribe(result => {
+        // event.preventDefault();
+
+        console.log('added')
+      }, err => {
+        console.log(err);
+      });
+      // dialogref.afterClosed().subscribe(() => {
+      //   dialogref.componentInstance.onAdd.unsubscribe();
+      // });
+    });
+
 
   }
 
@@ -48,10 +63,8 @@ export class MoviesListComponent implements OnInit {
       if (result) {
         this.apiService.deleteMovie(id).subscribe(() => {
           console.log('Movie was deleted');
-          this.ngOnInit();
         });
       }
-
     });
   }
 
@@ -59,8 +72,6 @@ export class MoviesListComponent implements OnInit {
     this.dialog.open(EditDialogComponent, {
       width: '600px',
       data: movie
-    }).afterClosed().subscribe(() => {
-      this.ngOnInit();
     });
 
   }

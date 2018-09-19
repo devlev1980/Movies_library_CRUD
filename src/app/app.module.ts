@@ -13,7 +13,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {YesNoComponent} from './dialogs/yes-no/yes-no.component';
 import {EditDialogComponent} from './dialogs/edit-dialog/edit-dialog.component';
-import {ToastrModule} from 'ngx-toastr';
+import { SearchFilterPipe } from './movies-list/search-filter.pipe';
+import { InputPipe } from './movies-list/input.pipe';
 
 
 @NgModule({
@@ -23,6 +24,8 @@ import {ToastrModule} from 'ngx-toastr';
     AddMovieComponent,
     YesNoComponent,
     EditDialogComponent,
+    SearchFilterPipe,
+    InputPipe,
 
   ],
   imports: [

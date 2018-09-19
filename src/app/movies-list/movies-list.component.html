@@ -1,32 +1,33 @@
-<button mat-fab color="accent"  class="addButton" (click)="onAddBook()" matTooltip="Add Movie">+</button>
+<button mat-fab color="accent" class="addButton" (click)="onAddBook()" matTooltip="Add Movie">+</button>
+<mat-form-field>
 
+  <input type="text" matInput class="search" placeholder="search" [ngModel]="searchInput|input" pattern="[^\u0000-\u007F]+"
+         (ngModelChange)="searchInput=$event">
+</mat-form-field>
 
 <div class="cards">
-  <mat-card *ngFor="let movie of movies" >
+  <mat-card *ngFor="let movie of movies|searchFilter: searchInput">
     <mat-card-title>{{movie.title}}</mat-card-title>
+    <hr>
     <mat-card-header>
     </mat-card-header>
     <mat-card-content>
-      <p>
-        Directed by : {{movie.director}}
-      </p>
-    <p>  Genre : {{movie.genre}}</p>
-    <p>  Year : {{movie.year}}</p>
-    <p>  Runtime : {{movie.runtime}}</p>
+      <p>Directed by : {{movie.director}}</p>
+      <p> Genre : {{movie.genre}}</p>
+      <p> Year : {{movie.year}}</p>
+      <p> Runtime : {{movie.runtime}}</p>
 
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" class="btnEdit" (click)="onEditMovie(movie)">
         <mat-icon>edit</mat-icon>
-        Edit</button>
+        Edit
+      </button>
       <button mat-raised-button color="warn" class="btnDelete" (click)="onDeleteMovie(movie.id)">
         <mat-icon>delete_forever</mat-icon>
-        Delete</button>
+        Delete
+      </button>
     </mat-card-actions>
   </mat-card>
-
 </div>
 
-<!--<ul *ngFor="let movie of movies">-->
-  <!--<li>aaa</li>-->
-<!--</ul>-->

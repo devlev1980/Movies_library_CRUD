@@ -1,8 +1,8 @@
 
   <mat-dialog-content>
     <div class="movieForm" >
-  <h3>Add New Movie</h3>
-  <form [formGroup]="addMovieForm" >
+  <h2>Add New Movie</h2>
+  <form [formGroup]="addMovieForm" (submit)="onAdd(addMovieForm.value)" >
     <mat-form-field >
       <label>Title:</label>
       <input matInput type="text" formControlName="title">
@@ -30,8 +30,7 @@
 
     <mat-form-field >
       <label>Year:</label>
-      <input matInput type="text" formControlName="year" pattern="[0-9]+(\.[0-9][0-9]?)">
-      <!--<mat-error *ngIf="addMovieForm.controls['year'].errors">Year must be 4 digits</mat-error>-->
+      <input matInput type="text" formControlName="year" >
       <mat-error *ngIf="!addMovieForm.controls['year'].hasError('minLength')">Year must be 4 digits minimum and 4 digits maximum</mat-error>
       <mat-error *ngIf="!addMovieForm.controls['year'].hasError('maxLength')"></mat-error>
       <mat-error *ngIf="addMovieForm.controls['year'].hasError('required')">This field is required</mat-error>
@@ -39,7 +38,7 @@
     </mat-form-field>
 
     <div class="actions">
-      <button mat-raised-button color="primary" mat-dialog-close class="btnAdd" (click)="onAddMovie(addMovieForm.value)" [disabled]="addMovieForm.invalid">ADD</button>
+      <button mat-raised-button color="primary" mat-dialog-close class="btnAdd" type="submit" (click)="onAddMovie(addMovieForm.value)" [disabled]="addMovieForm.invalid">ADD</button>
       <button mat-raised-button color="primary" [mat-dialog-close]="false"  class="btnCancel" >CANCEL</button>
     </div>
   </form>
