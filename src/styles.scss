@@ -9,6 +9,10 @@ body{
 mat-dialog-container.mat-dialog-container{
   background-color: #283044;
   color: #fff;
+  h2{
+    padding: 0;
+    margin: 0;
+  }
 
   .actions {
     margin-top: 1rem;
@@ -20,6 +24,9 @@ mat-dialog-container.mat-dialog-container{
     .btnCancel,.btnNO{
       background-color: #A53860;
     }
+  }
+  .mat-form-field-infix{
+    padding: 0;
   }
 
 

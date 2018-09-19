@@ -2,7 +2,7 @@
   <mat-dialog-content>
     <div class="movieForm" >
   <h2>Add New Movie</h2>
-  <form [formGroup]="addMovieForm" (submit)="onAdd(addMovieForm.value)" >
+  <form [formGroup]="addMovieForm" >
     <mat-form-field >
       <label>Title:</label>
       <input matInput type="text" formControlName="title">

@@ -33,23 +33,21 @@ export class MoviesListComponent implements OnInit {
 
   }
 
-  onAddBook(event) {
+  onAddBook() {
     const dialogref = this.dialog.open(AddMovieComponent, {
       width: '500px'
     });
     const sub = dialogref.componentInstance.onAdd.subscribe((form) => {
-      // do something
       console.log('Form', form);
       this.apiService.addMovie(form).subscribe(result => {
         // event.preventDefault();
-
         console.log('added')
       }, err => {
         console.log(err);
       });
-      // dialogref.afterClosed().subscribe(() => {
-      //   dialogref.componentInstance.onAdd.unsubscribe();
-      // });
+      dialogref.afterClosed().subscribe(() => {
+        dialogref.componentInstance.onAdd.unsubscribe();
+      });
     });
 
 
