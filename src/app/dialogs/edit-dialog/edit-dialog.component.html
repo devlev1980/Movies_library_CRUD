@@ -1,0 +1,43 @@
+
+<mat-dialog-content>
+  <div class="movieForm" >
+    <h3>Edit Movie</h3>
+    <form [formGroup]="form" >
+      <mat-form-field >
+        <label>Title:</label>
+        <input matInput type="text" formControlName="title" >
+      </mat-form-field>
+
+      <mat-form-field >
+        <label>Director:</label>
+        <input matInput type="text" formControlName="director" >
+
+      </mat-form-field>
+
+      <mat-form-field >
+        <label>Genre:</label>
+        <input matInput type="text" formControlName="genre" >
+
+      </mat-form-field>
+
+      <mat-form-field >
+        <label>Runtime:</label>
+        <input matInput type="text" formControlName="runtime" >
+
+      </mat-form-field>
+
+      <mat-form-field >
+        <label>Year:</label>
+        <input matInput type="text" formControlName="year" >
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" mat-dialog-close class="btnAdd" (click)="onSaveMovie(addMovieForm.value)" >SAVE</button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="false"  class="btnCancel" >CANCEL</button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+
+
+

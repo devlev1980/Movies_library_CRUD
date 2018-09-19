@@ -15,12 +15,13 @@ export class AddMovieComponent implements OnInit {
       title: new FormControl('', Validators.required),
       director: new FormControl('', Validators.required),
       genre: new FormControl('', Validators.required),
+      runtime: new FormControl('', Validators.required),
       year: new FormControl('', Validators.minLength(4))
     });
   }
 
   ngOnInit() {
-    this.apiService.getMovies().subscribe()
+    // this.apiService.getMovies().subscribe()
   }
 
   onAddMovie(form) {

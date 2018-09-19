@@ -4,6 +4,7 @@ import {Movie} from '../models/movie';
 import {MatDialog} from '@angular/material';
 import {AddMovieComponent} from '../dialogs/add-movie/add-movie.component';
 import {YesNoComponent} from '../dialogs/yes-no/yes-no.component';
+import {EditDialogComponent} from '../dialogs/edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-movies-list',
@@ -47,6 +48,14 @@ export class MoviesListComponent implements OnInit {
         });
       }
     });
+  }
+
+  onEditMovie(movie) {
+    this.dialog.open(EditDialogComponent, {
+      width: '600px',
+      data: movie
+    });
+
   }
 
 }

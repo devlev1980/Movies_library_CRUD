@@ -1,17 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { MoviesListComponent } from './movies-list/movies-list.component';
+import {AppComponent} from './app.component';
+import {MoviesListComponent} from './movies-list/movies-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ApiService} from './services/api.service';
 import {MaterialModule} from './material.module';
-import { AddMovieComponent } from './dialogs/add-movie/add-movie.component';
+import {AddMovieComponent} from './dialogs/add-movie/add-movie.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { YesNoComponent } from './dialogs/yes-no/yes-no.component';
+import {YesNoComponent} from './dialogs/yes-no/yes-no.component';
+import {EditDialogComponent} from './dialogs/edit-dialog/edit-dialog.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { YesNoComponent } from './dialogs/yes-no/yes-no.component';
     MoviesListComponent,
     AddMovieComponent,
     YesNoComponent,
+    EditDialogComponent,
 
   ],
   imports: [
@@ -32,7 +34,8 @@ import { YesNoComponent } from './dialogs/yes-no/yes-no.component';
     MaterialModule,
   ],
   providers: [ApiService],
-  entryComponents: [AddMovieComponent,YesNoComponent],
+  entryComponents: [AddMovieComponent, YesNoComponent, EditDialogComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

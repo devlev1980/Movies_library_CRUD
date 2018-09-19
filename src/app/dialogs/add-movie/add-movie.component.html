@@ -20,12 +20,17 @@
       <label>Genre:</label>
       <input matInput type="text" formControlName="genre">
       <mat-error *ngIf="!addMovieForm.get('genre').valid">Please enter a genre</mat-error>
+    </mat-form-field>
 
+    <mat-form-field >
+      <label>Runtime:</label>
+      <input matInput type="text" formControlName="runtime">
+      <mat-error *ngIf="!addMovieForm.get('runtime').valid">Please enter a duration</mat-error>
     </mat-form-field>
 
     <mat-form-field >
       <label>Year:</label>
-      <input matInput type="text" formControlName="year">
+      <input matInput type="text" formControlName="year" >
       <mat-error *ngIf="addMovieForm.controls['year'].errors">Year must be 4 digits</mat-error>
     </mat-form-field>
 
