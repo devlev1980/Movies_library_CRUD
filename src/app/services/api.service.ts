@@ -12,14 +12,17 @@ export class ApiService {
   constructor(private _http: HttpClient) {
   }
 
-  getMovies(): Observable<any> {
-    return this._http.get(environment.apiURL).pipe(map((data: any) => {
+  getMovies(): Observable<Movie[]> {
+    return this._http.get<Movie>(environment.apiURL).pipe(map((data: any) => {
       return data;
     }));
   }
 
   addMovie(movie) {
     return this._http.post(environment.apiURL, movie);
+  }
+  getTitle(title: string){
+    return this._http.get(`${environment.apiURL}?title=${title}`);
   }
 
   updateMovie(movie, id) {

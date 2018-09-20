@@ -15,6 +15,7 @@ import {YesNoComponent} from './dialogs/yes-no/yes-no.component';
 import {EditDialogComponent} from './dialogs/edit-dialog/edit-dialog.component';
 import { SearchFilterPipe } from './movies-list/search-filter.pipe';
 import { InputPipe } from './movies-list/input.pipe';
+import {DataService} from './services/data.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { InputPipe } from './movies-list/input.pipe';
     FormsModule,
     MaterialModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService,DataService],
   entryComponents: [AddMovieComponent, YesNoComponent, EditDialogComponent],
   bootstrap: [AppComponent]
 })

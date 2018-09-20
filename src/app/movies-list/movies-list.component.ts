@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {AddMovieComponent} from '../dialogs/add-movie/add-movie.component';
 import {YesNoComponent} from '../dialogs/yes-no/yes-no.component';
 import {EditDialogComponent} from '../dialogs/edit-dialog/edit-dialog.component';
+import {DataService} from '../services/data.service';
 
 @Component({
   selector: 'app-movies-list',
@@ -15,7 +16,7 @@ export class MoviesListComponent implements OnInit {
   movies: Movie[];
   searchInput: string;
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) {
+  constructor(private apiService: ApiService, private dialog: MatDialog, private dataService: DataService) {
   }
 
   ngOnInit() {
@@ -23,6 +24,8 @@ export class MoviesListComponent implements OnInit {
       console.log(movies);
       if (movies) {
         this.movies = movies;
+        this.dataService.sendMovies(this.movies);
+
       } else {
         console.log('error');
       }
@@ -35,13 +38,14 @@ export class MoviesListComponent implements OnInit {
 
   onAddBook() {
     const dialogref = this.dialog.open(AddMovieComponent, {
-      width: '500px'
+      width: '500px',
+      data: this.movies
     });
     const sub = dialogref.componentInstance.onAdd.subscribe((form) => {
       console.log('Form', form);
       this.apiService.addMovie(form).subscribe(result => {
         // event.preventDefault();
-        console.log('added')
+        console.log('added');
       }, err => {
         console.log(err);
       });

@@ -25,7 +25,7 @@
     <mat-form-field >
       <label>Runtime:</label>
       <input matInput type="text" formControlName="runtime">
-      <mat-error *ngIf="!addMovieForm.get('runtime').valid">Please enter a duration</mat-error>
+      <mat-error *ngIf="!addMovieForm.get('runtime').valid">Please enter a duration in minutes</mat-error>
     </mat-form-field>
 
     <mat-form-field >
